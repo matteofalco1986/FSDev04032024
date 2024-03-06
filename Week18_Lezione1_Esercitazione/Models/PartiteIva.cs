@@ -12,8 +12,10 @@ namespace Week18_Lezione1_Esercitazione.Models
         public static int Length { get { return _length; } }
         [Key]
         public int Id { get; set; }
-        public string PartitaIva { get; set; }
-        public string Password { get; set; }
         public string NomeAzienda { get; set; }
+        public string PartitaIva { get; set; }
+
+        public string Indirizzo { get; set; }
+        public string Citta { get; set; }
     }
 }

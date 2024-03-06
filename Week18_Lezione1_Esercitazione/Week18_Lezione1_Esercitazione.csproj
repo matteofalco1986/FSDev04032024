@@ -120,16 +120,16 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BackofficeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginFormController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminData.cs" />
     <Compile Include="Models\CodiciFiscali.cs" />
     <Compile Include="Models\Commands.cs" />
-    <Compile Include="Models\DatiCliente.cs" />
-    <Compile Include="Models\DatiPartitaIva.cs" />
     <Compile Include="Models\PartiteIva.cs" />
     <Compile Include="Models\Queries.cs" />
     <Compile Include="Models\Spedizioni.cs" />
@@ -187,6 +187,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\LoginForm\Index.cshtml" />
     <Content Include="Views\LoginForm\Register.cshtml" />
+    <Content Include="Views\Backoffice\ShowCustomers.cshtml" />
+    <Content Include="Views\Backoffice\AddCustomer.cshtml" />
+    <Content Include="Views\Backoffice\EditCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
