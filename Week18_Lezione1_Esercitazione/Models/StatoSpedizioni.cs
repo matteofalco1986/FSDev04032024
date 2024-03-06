@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
+
+
+
 
 namespace Week18_Lezione1_Esercitazione.Models
 {
@@ -11,6 +15,8 @@ namespace Week18_Lezione1_Esercitazione.Models
         private static int _maxValueId = 4;
         public static int MinValueId { get { return _minValueId; } }
         public static int MaxValueId { get { return _maxValueId; } }
+
+        [Key]
         public int Id { get; set; }
         public string StatoSpedizione { get; set; }
     }

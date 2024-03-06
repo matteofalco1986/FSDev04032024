@@ -9,6 +9,6 @@ namespace Week18_Lezione1_Esercitazione.Models
     public static class Queries
     {
         public static string AdminData = "SELECT * FROM AdminData where Username = @username AND Password = @password";
-
+        public static string RegisterUser = "INSERT INTO AdminData(Username, Password) VALUES (@username, @password)";
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +8,7 @@ namespace Week18_Lezione1_Esercitazione.Models
 {
     public class Spedizioni
     {
+        [Key]
         public int SpedizioniId { get; set; }
         public int? ClienteId { get; set; }
         public int? PartitaIvaId { get; set; }

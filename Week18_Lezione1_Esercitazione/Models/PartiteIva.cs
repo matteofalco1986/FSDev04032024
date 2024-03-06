@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -9,6 +10,7 @@ namespace Week18_Lezione1_Esercitazione.Models
     {
         private static int _length = 11;
         public static int Length { get { return _length; } }
+        [Key]
         public int Id { get; set; }
         public string PartitaIva { get; set; }
         public string Password { get; set; }

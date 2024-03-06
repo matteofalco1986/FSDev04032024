@@ -18,9 +18,31 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
+                <ul class="navbar-nav flex-grow-1 gap-3">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Login", "Index", "LoginForm", new { area = "" }, new { @class = "btn btn-primary" })</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+
+                        <li>
+                            @using (Html.BeginForm("Logout", "LoginForm"))
+                            {
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-danger">Logout</button>
+                            }
+
+
+
+                        </li>
+
+                    }
+                    else
+                    {
+
+                        <li>@Html.ActionLink("Login", "Index", "LoginForm", new { area = "" }, new { @class = "btn btn-primary" })</li>
+                        <li>@Html.ActionLink("Registrati", "Register", "LoginForm", new { area = "" }, new { @class = "btn btn-danger" })</li>
+
+                    }
+
                 </ul>
             </div>
         </div>
