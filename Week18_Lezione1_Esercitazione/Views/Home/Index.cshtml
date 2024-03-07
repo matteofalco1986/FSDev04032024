@@ -6,4 +6,23 @@
     <div class="d-flex justify-content-center align-items-center">
         <h1>Welcome to home page</h1>
     </div>
+
 </main>
+
+@section myScripts{
+    <script>
+        const paragraphs = document.querySelectorAll('.paragraph-to-fill');
+        const jsonCaller = document.querySelector(".json-caller");
+        jsonCaller.addEventListener("click", () => {
+            fetch("https://localhost:44363/Backoffice/JsonShowCustomers")
+                .then(res => res.json())
+                .then(data => {
+                    for (let i = 0; i < data.length; i++) {
+                        console.log(data[i].Nome)
+                        paragraphs[i].textContent = data[i].Nome;
+                    }
+                });
+        })
+    </script>
+
+}

@@ -203,5 +203,31 @@ namespace Week18_Lezione1_Esercitazione.Controllers
             }
             return View(shipping);
         }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public JsonResult JsonShowCustomers()
+        {
+            var conn = Commands.ConnectToDb();
+            SqlCommand command = new SqlCommand(Queries.CustomersList, conn);
+            var reader = command.ExecuteReader();
+
+            List<CodiciFiscali> Customers = new List<CodiciFiscali>();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    var customer = new CodiciFiscali();
+                    customer.Id = (int)reader["Id"];
+                    customer.Nome = (string)reader["Nome"];
+                    customer.Cognome = (string)reader["Cognome"];
+                    customer.CodiceFiscale = (string)reader["CodiceFiscale"];
+                    customer.Indirizzo = (string)reader["Indirizzo"];
+                    customer.Citta = (string)reader["Citta"];
+                    Customers.Add(customer);
+                }
+            }
+            return Json(Customers, JsonRequestBehavior.AllowGet);
+        }
     }
 }
