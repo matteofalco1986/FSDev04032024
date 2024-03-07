@@ -127,12 +127,66 @@ namespace Week18_Lezione1_Esercitazione.Controllers
                 return RedirectToAction("ShowCustomers", "Backoffice");
             }
 
-            
+
             return View(customer);
         }
 
         [HttpGet]
+        public ActionResult ShowShippings()
+        {
+            var conn = Commands.ConnectToDb();
+            SqlCommand command = new SqlCommand(Queries.ShippingsList, conn);
+            var reader = command.ExecuteReader();
+
+            List<Spedizioni> Shippings = new List<Spedizioni>();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    var shipping = new Spedizioni();
+
+                    shipping.StatoSpedizione = new StatoSpedizioni()
+                    {
+                        Id = (int)reader["StatoSpedizioneId"],
+                        StatoSpedizione = (string)reader["StatoSpedizione"],
+                    };
+
+                    shipping.CodiceFiscale = new CodiciFiscali()
+                    {
+                        Id = (int)reader["ClienteId"],
+                        Nome = (string)reader["Nome"],
+                        Cognome = (string)reader["Cognome"],
+                        CodiceFiscale = (string)reader["CodiceFiscale"],
+                        Indirizzo = (string)reader["Indirizzo"],
+                        Citta = (string)reader["Citta"],
+                    };
+
+
+                    shipping.SpedizioneId = (int)reader["SpedizioneId"];
+                    shipping.ClienteId = (int)reader["ClienteId"];
+                    // shipping.PartitaIvaId = (int)reader["PartitaIvaId"];
+                    shipping.StatoSpedizioneId = (int)reader["StatoSpedizioneId"];
+                    shipping.DataSpedizione = (DateTime)reader["DataSpedizione"];
+                    shipping.Peso = Convert.ToDouble(reader["Peso"]);
+                    shipping.CostoSpedizione = Convert.ToDouble(reader["CostoSpedizione"]);
+                    shipping.DataConsegnaPrevista = (DateTime)reader["DataConsegnaPrevista"];
+
+                    Shippings.Add(shipping);
+                }
+            }
+            return View(Shippings);
+        }
+
+        [HttpGet]
         public ActionResult AddShipping()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddShipping(Spedizioni shipping)
         {
             return View();
         }

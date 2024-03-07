@@ -17,6 +17,12 @@ namespace Week18_Lezione1_Esercitazione.Models
         public static string CustomerDataUpdate = @"UPDATE CodiciFiscali
                                                     SET Nome = @Nome, Cognome = @Cognome, CodiceFiscale = @CodiceFiscale, Indirizzo = @Indirizzo, Citta =                  Citta
                                                     WHERE Id = @Id";
+        public static string ShippingsList = @"SELECT * 
+                                                FROM Spedizioni as Spedizioni
+                                                JOIN CodiciFiscali as Clienti
+                                                ON Spedizioni.ClienteId = Clienti.Id
+                                                JOIN StatoSpedizioni as Stato
+                                                ON Spedizioni.StatoSpedizioneId = Stato.Id";
 
     }
 }

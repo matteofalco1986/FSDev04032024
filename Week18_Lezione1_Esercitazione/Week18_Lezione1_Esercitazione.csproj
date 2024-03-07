@@ -190,6 +190,8 @@
     <Content Include="Views\Backoffice\ShowCustomers.cshtml" />
     <Content Include="Views\Backoffice\AddCustomer.cshtml" />
     <Content Include="Views\Backoffice\EditCustomer.cshtml" />
+    <Content Include="Views\Backoffice\AddShipping.cshtml" />
+    <Content Include="Views\Backoffice\ShowShippings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

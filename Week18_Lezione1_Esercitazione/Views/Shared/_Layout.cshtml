@@ -24,7 +24,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Clienti", "ShowCustomers", "Backoffice", new { area = "" }, new { @class = "nav-link" })</li>
-                        <li>@Html.ActionLink("Aggiungi una spedizione", "Index", "LoginForm", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Spedizioni", "ShowShippings", "Backoffice", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>
                             @using (Html.BeginForm("Logout", "LoginForm"))
                             {

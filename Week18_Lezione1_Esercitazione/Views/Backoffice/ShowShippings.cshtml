@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "ShowShippings";
+}
+
+<h2 class="mt-3">SPEDIZIONI</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Indirizzo</th>
+            <th scope="col">Data Spedizione</th>
+            <th scope="col">Data consegna prevista</th>
+            <th scope="col">Stato Spedizione</th>
+            <th scope="col">Peso</th>
+            <th scope="col">Costo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var shipping in Model)
+        {
+            <tr>
+                <th scope="row">@shipping.SpedizioneId</th>
+                <td>@(shipping.CodiceFiscale.Nome) @(shipping.CodiceFiscale.Cognome)</td>
+                <td>@(shipping.CodiceFiscale.Indirizzo), @(shipping.CodiceFiscale.Citta)</td>
+                <td>@shipping.DataSpedizione</td>
+                <td>@shipping.DataConsegnaPrevista</td>
+                <td>@shipping.StatoSpedizione.StatoSpedizione</td>
+                <td>@(shipping.Peso.ToString("0.00")) KG</td>
+                <td>@(shipping.CostoSpedizione.ToString("0.00")) $</td>
+            </tr>
+        }
+    </tbody>
+</table>
