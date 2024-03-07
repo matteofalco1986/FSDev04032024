@@ -180,17 +180,28 @@ namespace Week18_Lezione1_Esercitazione.Controllers
         [HttpGet]
         public ActionResult AddShipping()
         {
-
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddShipping(Spedizioni shipping)
+        public ActionResult AddShipping([Bind(Exclude = "SpedizioneId")] Spedizioni shipping)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                var conn = Commands.ConnectToDb();
+                SqlCommand command = new SqlCommand(Queries.AddShipping, conn);
+                command.Parameters.AddWithValue("@ClienteId", shipping.ClienteId);
+                command.Parameters.AddWithValue("@StatoSpedizioneId", shipping.StatoSpedizioneId);
+                command.Parameters.AddWithValue("@DataSpedizione", shipping.DataSpedizione);
+                command.Parameters.AddWithValue("@Peso", shipping.Peso);
+                command.Parameters.AddWithValue("@CostoSpedizione", shipping.CostoSpedizione);
+                command.Parameters.AddWithValue("@DataConsegnaPrevista", shipping.DataConsegnaPrevista);
+                command.ExecuteNonQuery();
+                conn.Close();
+                return RedirectToAction("ShowShippings", "Backoffice");
+            }
+            return View(shipping);
         }
-
-
     }
 }

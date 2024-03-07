@@ -13,9 +13,11 @@ namespace Week18_Lezione1_Esercitazione.Models
         public static string CustomersList = "SELECT * FROM CodiciFiscali";
         public static string PartiteIvaList = "SELECT * FROM PartiteIva";
         public static string AddCustomer = "INSERT INTO CodiciFiscali (Nome, Cognome, CodiceFiscale, Indirizzo, Citta) VALUES (@Nome, @Cognome, @CodiceFiscale, @Indirizzo, @Citta)";
+        public static string AddShipping = "INSERT INTO Spedizioni (ClienteId, StatoSpedizioneId, DataSpedizione, Peso, CostoSpedizione, DataConsegnaPrevista) VALUES (@ClienteId, @StatoSpedizioneId, @DataSpedizione, @Peso, @CostoSpedizione, @DataConsegnaPrevista)";
         public static string GetCustomerData = "SELECT * FROM CodiciFiscali WHERE Id = @Id";
+        public static string GetStatoSpedizioneData = "SELECT * FROM StatoSpedizioni WHERE Id = @Id";
         public static string CustomerDataUpdate = @"UPDATE CodiciFiscali
-                                                    SET Nome = @Nome, Cognome = @Cognome, CodiceFiscale = @CodiceFiscale, Indirizzo = @Indirizzo, Citta =                  Citta
+                                                    SET Nome = @Nome, Cognome = @Cognome, CodiceFiscale = @CodiceFiscale, Indirizzo = @Indirizzo, Citta = Citta
                                                     WHERE Id = @Id";
         public static string ShippingsList = @"SELECT * 
                                                 FROM Spedizioni as Spedizioni

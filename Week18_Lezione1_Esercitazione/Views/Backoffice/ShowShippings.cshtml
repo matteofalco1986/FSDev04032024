@@ -8,7 +8,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">Id</th>
+            <th scope="col">Id Spedizione</th>
             <th scope="col">Cliente</th>
             <th scope="col">Indirizzo</th>
             <th scope="col">Data Spedizione</th>
@@ -23,10 +23,10 @@
         {
             <tr>
                 <th scope="row">@shipping.SpedizioneId</th>
-                <td>@(shipping.CodiceFiscale.Nome) @(shipping.CodiceFiscale.Cognome)</td>
+                <td>@(shipping.CodiceFiscale.Cognome) @(shipping.CodiceFiscale.Nome)</td>
                 <td>@(shipping.CodiceFiscale.Indirizzo), @(shipping.CodiceFiscale.Citta)</td>
-                <td>@shipping.DataSpedizione</td>
-                <td>@shipping.DataConsegnaPrevista</td>
+                <td>@shipping.DataSpedizione.ToString("dd/MM/yyyy")</td>
+                <td>@shipping.DataConsegnaPrevista.ToString("dd/MM/yyyy")</td>
                 <td>@shipping.StatoSpedizione.StatoSpedizione</td>
                 <td>@(shipping.Peso.ToString("0.00")) KG</td>
                 <td>@(shipping.CostoSpedizione.ToString("0.00")) $</td>
